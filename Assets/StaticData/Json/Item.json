@@ -1,0 +1,28 @@
+﻿[
+  {
+    "index": 1000,
+    "name": "빨간포션",
+    "itemType": "Expendables",
+    "affectingStats": [
+      "currentHp"
+    ],
+    "affectingStatsValue": [
+      50.0
+    ],
+    "description": "소모 시 사용자의 현재 HP를 50 회복시킨다.",
+    "resourcePath": "potion"
+  },
+  {
+    "index": 1001,
+    "name": "파란포션",
+    "itemType": "Expendables",
+    "affectingStats": [
+      "currentMana"
+    ],
+    "affectingStatsValue": [
+      50.0
+    ],
+    "description": "소모 시 사용자의 현재 Mana를 50 회복시킨다.",
+    "resourcePath": "potion2"
+  }
+]

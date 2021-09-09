@@ -1,0 +1,61 @@
+어택 쿨타임 위치 변경 광클해도 안멈추게.
+
+오늘은 HP 바 달아주기.
+
+죽는 애니메이션 끝날 때 호출되는 이벤트 OnDeadEnd()
+
+Ingame씬에 객체 만들어놓기 HP바가 UI인것은 맞지만 우리가 쓰는 UICanvas의 형태로 사용할 UI는 아님.
+
+우리가 만든 UI는 화면 자체 스크린 스페이스에서 오버레이로 쓰고 있음.
+일반적인 UI는 이 스크린 스페이스를 이용하는데 몬스터한테 달리는 HP는 몬스터가 이동하면 당연히 따라 이동함.
+
+렌더 모드에 보면 World Space 영역에서 출력시킬 것.
+VR 같은 곳에서도 UI 표현할 때 이런 것 많이 쓴다고 함 3D 게임에서도 월드상에 표시되는 HP바 같은 UI에 사용.
+
+WorldUICanvas 를 인게임 씬에 생성
+
+RenderMode를 WorldSpace로 바꾸면 됨. 그리고 이벤트 카메라를 메인 카메라로.
+
+ScreenSpace 쓸 때와 다르게 Rect Transform이 수정할 수 있게 열림.
+여기를 수정을 좀 해주게 될 것.
+
+WorldSpace용 캔버스는 Width Height 맞추는게 그렇게 중요하지 않음. 3D 월드 전체를 의미하기 때문에 게임 씬에서 보면 카메라가 보는 월드 영역에 표현될 정도면 원래 UI 캔버스랑 같지 않아도 상관 없음. 값이 크던 적던 그 영역 안에 부분만 렌더되는 것 뿐임.
+
+1920 1080해봐야 우리가 아는 그 1920 1080 해상도가 아님. 
+그래서 Scale을 0.01 넣어줌.
+그리고 이미지 하위로 만들어서 이미지 넣어줌. 이미지 타입은 Filled로 하고 채우는 방식으로.
+
+HpBar 스크립트 생성.
+이건 몬스터와 마찬가지로 겁나 생성제거 될거니까 풀링함.
+
+일반적인 인간형 모델은 pivot을 아래쪽으로 함. 그래서 transform 위치 접근하면 이게 pivot을 기준으로 잡힘. 그래서 발쯤이 됨. 그런데 이 포지션으로 HpBar를 하면 발에 붙어댕기니까 콜라이더 접근해서 bounds 에서 size y를 구해가지고 1.1배정도 해서 붙여줌.
+
+이제 몬스터 생성 보면 SpawnMonster를 스테이지 매니저에서 할 때 세팅 끝나면 BattleManager에 넣어줌.
+그러니 BattleManager 있는 놈들 달아주면 됨.
+
+UIBattle에서 월드 캔버스 참조 받고 활성화된 모든 HpBar의 참조를 받아둠.
+
+AddHpBar 만들어서 여기서 hpbar 달아줌.
+
+
+이제 hpBar 달 때 얘는 2D라서 카메라 따라 돌아가게 처리해줘야 함. 얘가 계속 카메라 바라보게.
+이 처리를 빌보드 처리라고 함
+
+LookAt으로 처리해주고 다시 y축만 바뀌게 해줌.
+
+그리고 BattleManager부분에서 AddActor부분에서 UIWindowManager에서 UIBattle GetWindow 해서AddHpBar해줌.
+
+이제 스테이지 매니저 가서 씬 전환 후에 남아있는 HpBar들 다 풀에 넣어주는 Clear() 만들었는데 씬 전환 완료된 후에 OnChangeStageComplete() 호출되면 호출.
+
+그다음 인겜 씬에서 월드UI캔버스 넣어주기
+그리고 HPBar는 스크립트 달고 게이지는 자신의 이미지 넣어주고 프리팹으로
+
+그리고 리소스 매니저에서 프리팹 부르는 LoadAllPrefabs 에서 부르기.
+
+이제 플레이어 HP 만들기.
+BubbleGauge 생성
+
+버블게이지 UIBattle에서 가지고 있게 함. 버블이 이미지가 2개짜리라서 어쩔수없이 List로 가짐
+
+UICanvas에 UIBattle에 life_bubble_bg 라는 이미지가 있음.
+빨간 거 채우는 거는 life_bubble임.

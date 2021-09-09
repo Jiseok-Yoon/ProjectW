@@ -1,0 +1,34 @@
+﻿[
+  {
+    "index": 1000,
+    "name": "시작마을",
+    "genMonsters": [
+      -1
+    ],
+    "spawnArea": [
+      -1
+    ],
+    "warpStageRef": [
+      1001
+    ],
+    "resourcePath": "Prefabs/Stage/StartingVillage"
+  },
+  {
+    "index": 1001,
+    "name": "초보자사냥터",
+    "genMonsters": [
+      1000,
+      1001,
+      1002
+    ],
+    "spawnArea": [
+      0,
+      0,
+      0
+    ],
+    "warpStageRef": [
+      1000
+    ],
+    "resourcePath": "Prefabs/Stage/BeginnerHuntingGround"
+  }
+]

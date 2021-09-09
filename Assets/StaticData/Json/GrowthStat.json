@@ -1,0 +1,54 @@
+﻿[
+  {
+    "index": 1000,
+    "maxHp": 300.0,
+    "maxHpFactor": 1.3,
+    "maxMana": 100.0,
+    "maxManaFactor": 1.1,
+    "atk": 100.0,
+    "atkFactor": 1.15,
+    "def": 50.0,
+    "defFactor": 1.2,
+    "behaviour": 65.0,
+    "behaviourFactor": 1.1
+  },
+  {
+    "index": 1001,
+    "maxHp": 250.0,
+    "maxHpFactor": 1.25,
+    "maxMana": 120.0,
+    "maxManaFactor": 1.2,
+    "atk": 110.0,
+    "atkFactor": 1.2,
+    "def": 45.0,
+    "defFactor": 1.15,
+    "behaviour": 70.0,
+    "behaviourFactor": 1.15
+  },
+  {
+    "index": 1002,
+    "maxHp": 150.0,
+    "maxHpFactor": 1.1,
+    "maxMana": 200.0,
+    "maxManaFactor": 1.4,
+    "atk": 80.0,
+    "atkFactor": 1.05,
+    "def": 30.0,
+    "defFactor": 1.05,
+    "behaviour": 60.0,
+    "behaviourFactor": 1.05
+  },
+  {
+    "index": 1003,
+    "maxHp": 200.0,
+    "maxHpFactor": 1.15,
+    "maxMana": 150.0,
+    "maxManaFactor": 1.3,
+    "atk": 90.0,
+    "atkFactor": 1.1,
+    "def": 35.0,
+    "defFactor": 1.1,
+    "behaviour": 75.0,
+    "behaviourFactor": 1.2
+  }
+]

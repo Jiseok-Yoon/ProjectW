@@ -1,0 +1,46 @@
+﻿[
+  {
+    "index": 1000,
+    "name": "흑기사",
+    "atkType": "Normal",
+    "moveSpeed": 2.0,
+    "jumpForce": 16.0,
+    "atkRange": 1.0,
+    "atkInterval": 1.8,
+    "growthStatRef": 1000,
+    "resourcePath": "Prefabs/Actor/Character/BlackKnight"
+  },
+  {
+    "index": 1001,
+    "name": "창기사",
+    "atkType": "Normal",
+    "moveSpeed": 2.0,
+    "jumpForce": 16.0,
+    "atkRange": 1.0,
+    "atkInterval": 1.5,
+    "growthStatRef": 1001,
+    "resourcePath": "Prefabs/Actor/Character/SpearKnight"
+  },
+  {
+    "index": 1002,
+    "name": "마법사",
+    "atkType": "Projectile",
+    "moveSpeed": 2.0,
+    "jumpForce": 16.0,
+    "atkRange": 1.0,
+    "atkInterval": 1.9,
+    "growthStatRef": 1002,
+    "resourcePath": "Prefabs/Actor/Character/Wizard"
+  },
+  {
+    "index": 1003,
+    "name": "궁수",
+    "atkType": "Projectile",
+    "moveSpeed": 2.0,
+    "jumpForce": 16.0,
+    "atkRange": 1.0,
+    "atkInterval": 1.2,
+    "growthStatRef": 1003,
+    "resourcePath": "Prefabs/Actor/Character/Archer"
+  }
+]

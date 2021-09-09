@@ -1,0 +1,13 @@
+몬스터 마저 작성
+
+스테이지에 몬스터 인덱스 받아 스폰구역 위치 반환하는 메소드 작성.
+
+도달 불가능한 위치, 존재하는 위치 파악하기.
+agent에서 CalculatePath()로 파악가능.
+            var isExist = agent.CalculatePath(destPos, path);
+
+path 객체에서 status라는 프로퍼티가 있음. 이 값이 NavMeshPathStatus.PathPartial 면 못가는 경우.
+
+패트롤 시간 초기화. Define에 Monster 정의하고 최소 최대 정의.
+
+AttackController 생성
