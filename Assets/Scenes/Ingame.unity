@@ -2731,6 +2731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCloseESC: 1
   isOpen: 0
+  gr: {fileID: 229911983}
 --- !u!225 &676111768
 CanvasGroup:
   m_ObjectHideFlags: 0

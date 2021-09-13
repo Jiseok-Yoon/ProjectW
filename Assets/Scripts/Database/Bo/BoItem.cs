@@ -17,6 +17,13 @@ namespace ProjectW.DB
             amount = 1;
             this.sdItem = sdItem;
         }
+        public virtual BoItem DeepCopy()
+        {
+            var boItem = new BoItem(sdItem);
+            boItem.slotIndex = slotIndex;
+            boItem.amount = amount;
+            return boItem;
+        }
     }
 
     [Serializable]
@@ -29,6 +36,17 @@ namespace ProjectW.DB
         {
             isEquip = false;
             reinforceValue = 0;
+        }
+
+        public new BoEquipment DeepCopy()
+        {
+            var boEquipment = new BoEquipment(sdItem);
+            boEquipment.isEquip = isEquip;
+            boEquipment.reinforceValue = reinforceValue;
+            boEquipment.slotIndex = slotIndex;
+            boEquipment.amount = amount;
+            return boEquipment;
+
         }
     }
 }

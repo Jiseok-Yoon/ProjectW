@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace ProjectW.UI
 {
-    public class ItemSlot : MonoBehaviour, IPointerClickHandler
+    public class ItemSlot : MonoBehaviour/*, IPointerClickHandler*/
     {
         private TMP_Text itemAmount;
         public Image ItemImage { get; private set; }
@@ -62,34 +62,45 @@ namespace ProjectW.UI
             userItems[BoItem.slotIndex].amount = BoItem.amount;
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            // 아이템의 종류에 따라 사용처리
+        //public void OnPointerClick(PointerEventData eventData)
+        //{
+        //    // 아이템의 종류에 따라 사용처리
 
-            if (BoItem == null)
+        //    if (BoItem == null)
+        //        return;
+
+        //    var inventory = transform.GetComponentInParent<UIInventory>();
+
+        //    switch (BoItem.sdItem.itemType)
+        //    {
+        //        case Define.Item.ItemType.Equipment:
+        //            // 장비라면 아이템을 장착할 수 있는 아이템인지 확인해서
+        //            // 장착할 수 있다면 장착 처리
+        //            inventory.UseItem(BoItem);
+        //            break;
+        //        case Define.Item.ItemType.Expendables:
+        //            // 소모품이라면 아이템을 사용 처리 후, 아이템의 개수를 - 시키고
+        //            // 아이템의 개수가 0이라면 인벤토리에서 제거
+        //            inventory.EquipItem(BoItem);
+        //            break;
+        //        case Define.Item.ItemType.Quest:
+        //            break;
+        //        case Define.Item.ItemType.Etc:
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
+
+        public void Swap(ItemSlot originSlot)
+        {
+            if (originSlot.BoItem == null)
                 return;
 
-            var inventory = transform.GetComponentInParent<UIInventory>();
+            var targetItem = BoItem?.DeepCopy();
+            SetSlot(originSlot.BoItem);
+            originSlot.SetSlot(targetItem);
 
-            switch (BoItem.sdItem.itemType)
-            {
-                case Define.Item.ItemType.Equipment:
-                    // 장비라면 아이템을 장착할 수 있는 아이템인지 확인해서
-                    // 장착할 수 있다면 장착 처리
-                    inventory.UseItem(BoItem);
-                    break;
-                case Define.Item.ItemType.Expendables:
-                    // 소모품이라면 아이템을 사용 처리 후, 아이템의 개수를 - 시키고
-                    // 아이템의 개수가 0이라면 인벤토리에서 제거
-                    inventory.EquipItem(BoItem);
-                    break;
-                case Define.Item.ItemType.Quest:
-                    break;
-                case Define.Item.ItemType.Etc:
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }
