@@ -169,6 +169,22 @@ namespace ProjectW.Object
         }
         #endregion
 
+        private void OnApplicationQuit()
+        {
+            // 종료 직전에 플레이어가 위치한 곳의 정보를 db에 저장
+
+            var dtoStage = Dummy.DummyServer.Instance.userData.dtoStage;
+
+            dtoStage.index = GameManager.User.boStage.sdStage.index;
+
+            var playerPos = PlayerCharacter.transform.position;
+
+            dtoStage.posX = playerPos.x;
+            dtoStage.posY = playerPos.y;
+            dtoStage.posZ = playerPos.z;
+
+            Dummy.DummyServer.Instance.Save();
+        }
 
         private class InputHandler
         {

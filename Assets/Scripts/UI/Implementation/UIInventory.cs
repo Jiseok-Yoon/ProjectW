@@ -19,6 +19,7 @@ namespace ProjectW.UI
         private Vector3 dragSlotOriginPos;
         private ItemSlot dragSlot;
         public GraphicRaycaster gr;
+        public Button sortButton;
 
         public override void Start()
         {
@@ -40,6 +41,8 @@ namespace ProjectW.UI
             }
 
             InventoryUpdate();
+
+            sortButton.onClick.AddListener(SortingItem);
         }
 
         private void Update()
@@ -60,6 +63,23 @@ namespace ProjectW.UI
                 if (itemSlots[i].BoItem != null)
                     itemSlots[i].BoItem.slotIndex = i;
             }
+        }
+
+        public void SortingItem()
+        {
+            var result = itemSlots.OrderBy(_ => _.BoItem?.sdItem.index).ToList();
+            foreach(ItemSlot slot in itemSlots)
+            {
+                slot.SetSlot();
+            }
+            //for (int i = 0; i < itemSlots.Count; ++i)
+            //{
+            //    var Enumerator = result.GetEnumerator();
+            //    itemSlots[i].SetSlot(Enumerator.Current);
+            //    if (!Enumerator.MoveNext())
+            //        break;
+            //}
+
         }
 
         /// <summary>
