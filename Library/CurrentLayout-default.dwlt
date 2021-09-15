@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 321}
   m_MaxSize: {x: 12004, y: 8021}
   vertical: 0
-  controlID: 135
+  controlID: 122
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -471,9 +471,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1111.5128, y: 394.88535, z: -47.834053}
+    m_Target: {x: 273.37778, y: 354.05005, z: -14.886157}
     speed: 2
-    m_Value: {x: 1111.5128, y: 394.88535, z: -47.834053}
+    m_Value: {x: 273.37778, y: 354.05005, z: -14.886157}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -524,9 +524,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 503.52795
+    m_Target: 75.95592
     speed: 2
-    m_Value: 503.52795
+    m_Value: 75.95592
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -663,7 +663,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 449bfeff9c6fffff3c70ffff4c70ffffa48cffff72beffff2efbffffa0b400004cb5000062b6000026cf0000d2cf0000f2d0000070da0100dada01001cdb01003cdc0100
+      m_ExpandedIDs: 00e2fffff2ebffff2efbffffb2400000de5c0000f65c0000485d00008a5d0000485e0000aa5e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -726,21 +726,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/UI/Implementation
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/UI/Implementation
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Administrator\Desktop\YJS\ProjectW
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 181}
-    m_SelectedIDs: 805c0000
-    m_LastClickedID: 23680
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 485c0000
+    m_LastClickedID: 23624
     m_ExpandedIDs: 00000000045c0000065c0000085c00000a5c00000c5c00000e5c0000105c0000125c0000145c0000165c0000185c00001a5c00001c5c00001e5c0000205c0000225c0000245c0000265c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -880,7 +880,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 409
+    m_CachedPref: 183
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1

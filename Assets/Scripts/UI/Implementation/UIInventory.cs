@@ -63,23 +63,26 @@ namespace ProjectW.UI
                 if (itemSlots[i].BoItem != null)
                     itemSlots[i].BoItem.slotIndex = i;
             }
+            DBUpdate();
         }
 
         public void SortingItem()
         {
-            var result = itemSlots.OrderBy(_ => _.BoItem?.sdItem.index).ToList();
-            foreach(ItemSlot slot in itemSlots)
-            {
-                slot.SetSlot();
-            }
-            //for (int i = 0; i < itemSlots.Count; ++i)
-            //{
-            //    var Enumerator = result.GetEnumerator();
-            //    itemSlots[i].SetSlot(Enumerator.Current);
-            //    if (!Enumerator.MoveNext())
-            //        break;
-            //}
+            var result = itemSlots.OrderBy(_ => _.BoItem?.sdItem.index).Where(_ => _.BoItem != null).ToList();
 
+            List<BoItem> boItems = new List<BoItem>();
+            foreach(ItemSlot slot in result)
+            {
+                boItems.Add(slot.BoItem.DeepCopy());
+            }
+            for (int i = 0; i < itemSlots.Count; ++i)
+            {
+                if (i < boItems.Count)
+                    itemSlots[i].SetSlot(boItems[i]);
+                else
+                    itemSlots[i].SetSlot();
+            }
+            UpdateSlotIndex();
         }
 
         /// <summary>
@@ -237,9 +240,20 @@ namespace ProjectW.UI
 
             UpdateSlotIndex();
             // db에도 데이터를 업데이트해야함.
-            DummyServer.Instance.userData.dtoItem = new DtoItem(GameManager.User.boItems);
-            DummyServer.Instance.Save();
+        }
 
+        public void DBUpdate()
+        {
+            var boItems = GameManager.User.boItems;
+
+            for (int i = 0; i < itemSlots.Count; i++)
+            {
+                var index = boItems.FindIndex(_ => _.sdItem.index == itemSlots[i].BoItem?.sdItem.index);
+                if (index != -1)
+                    boItems[index] = itemSlots[i].BoItem;
+            }
+            DummyServer.Instance.userData.dtoItem = new DtoItem(boItems);
+            DummyServer.Instance.Save();
         }
     }
 }

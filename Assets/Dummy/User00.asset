@@ -21,9 +21,9 @@ MonoBehaviour:
     errorCode: 0
     errorMessage: 
     index: 1000
-    posX: -0.9549911
+    posX: -0.50290394
     posY: 0.92027676
-    posZ: 4.3360577
+    posZ: 7.653371
   dtoCharacter:
     errorCode: 0
     errorMessage: 
@@ -33,12 +33,12 @@ MonoBehaviour:
     errorCode: 0
     errorMessage: 
     items:
-    - slotIndex: 0
+    - slotIndex: 8
       index: 1001
       amount: 13
       reinforceValue: 0
       isEquip: 0
-    - slotIndex: 2
+    - slotIndex: 0
       index: 1000
       amount: 12
       reinforceValue: 0
