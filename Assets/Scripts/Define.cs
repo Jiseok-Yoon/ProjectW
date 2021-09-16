@@ -85,4 +85,14 @@ namespace ProjectW.Define
     {
         public enum ItemType { Equipment, Expendables, Quest, Etc }
     }
+
+    public class Npc
+    {
+        public enum NPCType { None, GeneralMerchandiser, EquipmentMerchandiser, ReinforcementMerchandiser }
+    }
+
+    public class Quest
+    {
+        public enum QuestType { Hunting, Collecting, adventure, delivery }
+    }
 }

@@ -129,6 +129,10 @@
     <Compile Include="Assets\Scripts\Database\Bo\BoActor.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoMonster.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Move\MoveToObject.cs" />
+    <Compile Include="Assets\Scripts\StaticData\Implementation\SDQuest.cs" />
+    <Compile Include="Assets\Scripts\StaticData\Implementation\SDNpc.cs" />
+    <Compile Include="Assets\Scripts\Database\Bo\BoQuest.cs" />
+    <Compile Include="Assets\Scripts\Database\Bo\BoNpc.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

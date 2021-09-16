@@ -1,0 +1,29 @@
+﻿[
+  {
+    "index": 1000,
+    "name": "거창한 시작",
+    "questType": "Collecting",
+    "antecedentQuest": [
+      0
+    ],
+    "target": [
+      1000,
+      1001,
+      1002
+    ],
+    "targetDetail": [
+      1,
+      1,
+      1
+    ],
+    "rewardItems": [
+      1000,
+      1001
+    ],
+    "rewardItemsCount": [
+      1,
+      1
+    ],
+    "description": "갔노라! 잡았노라! 얻었노라!"
+  }
+]
