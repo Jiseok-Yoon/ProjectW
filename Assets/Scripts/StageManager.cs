@@ -132,6 +132,7 @@ namespace ProjectW
             UIWindowManager.Instance.GetWindow<UIBattle>().Clear();
 
             ClearSpawnTime();
+            SpawnNPC();
             SpawnCharacter();
             SpawnMonster();
 
@@ -175,6 +176,20 @@ namespace ProjectW
 
             // 모든 초기화가 끝난 캐릭터 객체를 정상적으로 업데이트할 수 있게 배틀매니저에 등록한다.
             BattleManager.Instance.AddActor(playerCharacter);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SpawnNPC()
+        {
+            // 현재 스테이지 정보를 참조하여
+            // NPC 테이블에 접근해서 현재 스테이지에 존재하는 NPC 들의 정보를 받아온다.
+
+
+
+            // 받아온 NPC 들 중에 유저 DB에서 해당 유저가 해금한 NPC인지 확인하여
+            // 해금된 NPC라면 생성한다.
         }
 
         /// <summary>

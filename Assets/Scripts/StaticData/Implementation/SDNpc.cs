@@ -7,6 +7,7 @@ using static ProjectW.Define.Npc;
 
 namespace ProjectW.SD
 {
+    [Serializable]
     public class SDNpc : StaticData
     {
         public string name;
@@ -15,6 +16,7 @@ namespace ProjectW.SD
         public int[] needQusetRef;
         public int stageRef;
         public float[] stagePos;
+        public int[] speechRef;
         public string ResourcePath;
     }
 }

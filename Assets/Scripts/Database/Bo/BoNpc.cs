@@ -10,11 +10,11 @@ namespace ProjectW.DB
     [Serializable]
     public class BoNpc
     {
-        SDNpc sdNpc;
+        public SDNpc sdNPC;
 
-        BoNpc(SDNpc sdNpc)
+        public BoNpc(SDNpc sdNPC)
         {
-            this.sdNpc = sdNpc;
+            this.sdNPC = sdNPC;
         }
     }
 }

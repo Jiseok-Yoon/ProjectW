@@ -7,6 +7,7 @@ using static ProjectW.Define.Quest;
 
 namespace ProjectW.SD
 {
+    [Serializable]
     public class SDQuest : StaticData
     {
         public string name;
@@ -16,6 +17,7 @@ namespace ProjectW.SD
         public int[] targetDetail;
         public int[] rewardItems;
         public int[] rewardItemsCount;
-        public string description;
+        public int[] speechRef;
+        public int description;
     }
 }

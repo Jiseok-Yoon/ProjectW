@@ -88,11 +88,11 @@ namespace ProjectW.Define
 
     public class Npc
     {
-        public enum NPCType { None, GeneralMerchandiser, EquipmentMerchandiser, ReinforcementMerchandiser }
+        public enum NPCType { None, GeneralMerchandiser, EquipmentMerchandiser, ReinforcementMerchandiser, }
     }
 
     public class Quest
     {
-        public enum QuestType { Hunting, Collecting, adventure, delivery }
+        public enum QuestType { Hunt, Collect, Adventure, }
     }
 }

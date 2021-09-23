@@ -14,6 +14,7 @@ namespace ProjectW.Battle
     {
         public List<Actor> Characters { get; private set; } = new List<Actor>();
         public List<Actor> Monsters { get; private set; } = new List<Actor>();
+        public List<NPC> NPCS { get; private set; } = new List<NPC>();
 
         /// <summary>
         /// 활성화된 액터를 BM에 등록하는 기능

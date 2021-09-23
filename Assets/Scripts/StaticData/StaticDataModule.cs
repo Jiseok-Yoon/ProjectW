@@ -22,6 +22,7 @@ namespace ProjectW.SD
         public List<SDItem> sdItems;
         public List<SDNpc> sdNpc;
         public List<SDQuest> sdQuest;
+        public List<SDString> sdString;
 
         public void Initialize()
         {
@@ -34,6 +35,7 @@ namespace ProjectW.SD
             loader.Load(out sdItems);
             loader.Load(out sdNpc);
             loader.Load(out sdQuest);
+            loader.Load(out sdString);
         }
 
         /// <summary>
