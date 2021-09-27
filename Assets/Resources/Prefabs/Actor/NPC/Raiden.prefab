@@ -3646,7 +3646,7 @@ SkinnedMeshRenderer:
   - {fileID: 4674193605463464337, guid: b1358d6b74c9b114a802901b2672affb, type: 3}
   - {fileID: 4939280316672836623, guid: b1358d6b74c9b114a802901b2672affb, type: 3}
   - {fileID: -4658311172299138555, guid: b1358d6b74c9b114a802901b2672affb, type: 3}
-  - {fileID: 8973720276926594854, guid: b1358d6b74c9b114a802901b2672affb, type: 3}
+  - {fileID: 2100000, guid: e258b7a11ff292849ab0ba4df1cd1a74, type: 2}
   - {fileID: -3205854371510912265, guid: b1358d6b74c9b114a802901b2672affb, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4230,6 +4230,7 @@ GameObject:
   - component: {fileID: 5752179168809783876}
   - component: {fileID: 1816064106347808830}
   - component: {fileID: 4129066565944172747}
+  - component: {fileID: 651555646051250323}
   m_Layer: 9
   m_Name: Raiden
   m_TagString: Untagged
@@ -4295,6 +4296,20 @@ MonoBehaviour:
       stagePos: []
       speechRef: 
       ResourcePath: 
+  interactableArea: {fileID: 0}
+--- !u!65 &651555646051250323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942710309811865854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5041265397848739877
 GameObject:
   m_ObjectHideFlags: 0

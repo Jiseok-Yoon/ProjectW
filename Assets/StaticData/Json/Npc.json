@@ -9,10 +9,13 @@
     "needQuestRef": [
       0
     ],
-    "stageRef": [
-      1000
-    ],
+    "stageRef": 1000,
     "stagePos": [
+      2.5,
+      0.0005,
+      0.74,
+      0.0,
+      235.0,
       0.0
     ],
     "speechRef": [
@@ -20,7 +23,7 @@
       10001,
       10002
     ],
-    "resourcePath": "Resources/Actor/NPC/Raiden"
+    "resourcePath": "Prefabs/Actor/NPC/Raiden"
   },
   {
     "index": 1001,
@@ -32,16 +35,19 @@
     "needQuestRef": [
       0
     ],
-    "stageRef": [
-      1000
-    ],
+    "stageRef": 1000,
     "stagePos": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
       0.0
     ],
     "speechRef": [
       0
     ],
-    "resourcePath": "Resources/Actor/NPC/Amber"
+    "resourcePath": "Prefabs/Actor/NPC/Amber"
   },
   {
     "index": 1002,
@@ -53,15 +59,18 @@
     "needQuestRef": [
       1000
     ],
-    "stageRef": [
-      1000
-    ],
+    "stageRef": 1000,
     "stagePos": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
       0.0
     ],
     "speechRef": [
       0
     ],
-    "resourcePath": "Resources/Actor/NPC/Mona"
+    "resourcePath": "Prefabs/Actor/NPC/Mona"
   }
 ]

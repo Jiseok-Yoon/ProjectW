@@ -11,7 +11,39 @@ namespace ProjectW.Object
     public class NPC : MonoBehaviour
     {
         public BoNpc boNPC;
+        public BoxCollider interactableArea;
+        public bool isIntreacting;
 
+        public void Start()
+        {
+            var bounds = GetComponent<SkinnedMeshRenderer>().bounds;
+            interactableArea = gameObject.AddComponent<BoxCollider>();
+            interactableArea.center = bounds.center;
+            interactableArea.size.Set(bounds.extents.x * 2f, bounds.extents.y, bounds.extents.z * 2f);
+            interactableArea.isTrigger = true;
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer != LayerMask.GetMask("Player"))
+                return;
+            if (isIntreacting)
+                return;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                isIntreacting = true;
+                OnDialogue();
+            }
+        }
+
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.layer != LayerMask.GetMask("Player"))
+                return;
+            var uiDialogue = UIWindowManager.Instance.GetWindow<UIDialogue>();
+            uiDialogue.EndDialogue();
+
+        }
         public void Initialize(BoNpc boNPC)
         {
             this.boNPC = boNPC;
@@ -37,15 +69,17 @@ namespace ProjectW.Object
             // 기본 대화 중 하나를 랜덤하게 선택.
             var randIndex = Random.Range(0, boNPC.sdNPC.speechRef.Length);
 
+            var speechRef = boNPC.sdNPC.speechRef[randIndex];
             var speech = GameManager.SD.sdString.Where(_ => _.index == boNPC.sdNPC.speechRef[randIndex]).SingleOrDefault().kr;
 
             // 랜덤하게 뽑은 대사에 대사를 특정문자를 이용하여 여러 개로 나눴을 경우
             // 해당 특정문자로 문자열을 나눈다.
-            boDialogue.speeches = speech.Split('\n');
+            boDialogue.speeches = speech.Contains("/") ? speech.Split('/') : new string[] { speech };
 
 
             // 설정된 다이얼로그 데이터를 UI 다이얼로그에 적용
             uiDialogue.SetDialogue(boDialogue);
+            uiDialogue.Open();
 
         }
     }

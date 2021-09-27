@@ -2,7 +2,7 @@
   {
     "index": 1000,
     "name": "거창한 시작",
-    "questType": "Collecting",
+    "questType": "Collect",
     "antecedentQuest": [
       0
     ],

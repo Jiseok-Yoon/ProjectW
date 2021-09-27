@@ -100,6 +100,8 @@
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Move\TranslateMove.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\ScaleChange.cs" />
     <Compile Include="Assets\Scripts\Object\Controller\CameraController.cs" />
+    <Compile Include="Assets\Scripts\StaticData\Implementation\SDString.cs" />
+    <Compile Include="Assets\Scripts\Object\NPC\NPC.cs" />
     <Compile Include="Assets\Scripts\StaticData\Implementation\StaticData.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\Material_Change.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\SimpleObjectMake.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Assets\Scripts\StaticData\Implementation\SDMonster.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Move\MoveToTag.cs" />
     <Compile Include="Assets\Scripts\StaticData\Implementation\SDCharacter.cs" />
+    <Compile Include="Assets\Scripts\UI\Implementation\UIDialogue.cs" />
     <Compile Include="Assets\SDRPGPack3\Scripts\controller.cs" />
     <Compile Include="Assets\Scripts\Util\Singleton.cs" />
     <Compile Include="Assets\Scripts\StaticData\Implementation\SDGrowthStat.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="Assets\Scripts\UI\Implementation\UIBattle.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\MouseOrbit.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\RotateObject.cs" />
+    <Compile Include="Assets\Scripts\Database\Bo\BoDialogue.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoQuest.cs" />
     <Compile Include="Assets\Scripts\Network\ServerManager.cs" />
     <Compile Include="Assets\Scripts\Resource\SpriteLoader.cs" />
@@ -133,10 +137,6 @@
     <Compile Include="Assets\Scripts\StaticData\Implementation\SDQuest.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoMonster.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Move\MoveToObject.cs" />
-    <Compile Include="Assets\Scripts\StaticData\Implementation\SDString.cs" />
-    <Compile Include="Assets\Scripts\UI\Implementation\UIDialogue.cs" />
-    <Compile Include="Assets\Scripts\Database\Bo\BoDialogue.cs" />
-    <Compile Include="Assets\Scripts\Object\NPC\NPC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -159,6 +159,7 @@
     <None Include="Assets\FlatUI\gui_flat\Font\OFL.txt" />
     <None Include="Assets\FantasySpellsEffectsPack\Shader_ForEffects\Dissolve Texture\Shader_DissolveTexture(TextureAnimation).shader" />
     <None Include="Assets\FantasySpellsEffectsPack\Shader_ForEffects\Distortion Effect\Shader_DistortionEffect(WithMask).shader" />
+    <None Include="Assets\Genshin\RaidenShogun\StandardCullOff.shader" />
     <None Include="Assets\Genshin\Jean\琴\使用规则.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />

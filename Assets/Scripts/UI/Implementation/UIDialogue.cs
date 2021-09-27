@@ -14,6 +14,14 @@ namespace ProjectW.UI
 
         public BoDialogue boDialogue;
 
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                NextDialogue();
+            }
+        }
+
         public void SetDialogue(BoDialogue boDialogue)
         {
             this.boDialogue = boDialogue;
