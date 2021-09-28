@@ -16,9 +16,9 @@ namespace ProjectW.Object
 
         public void Start()
         {
-            var bounds = GetComponent<SkinnedMeshRenderer>().bounds;
+            var bounds = GetComponentInChildren<SkinnedMeshRenderer>().bounds;
             interactableArea = gameObject.AddComponent<BoxCollider>();
-            interactableArea.center = bounds.center;
+            interactableArea.center = Vector3.zero + new Vector3(0, bounds.extents.y, 0);
             interactableArea.size.Set(bounds.extents.x * 2f, bounds.extents.y, bounds.extents.z * 2f);
             interactableArea.isTrigger = true;
         }
@@ -29,6 +29,7 @@ namespace ProjectW.Object
                 return;
             if (isIntreacting)
                 return;
+            Debug.Log("hi");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 isIntreacting = true;

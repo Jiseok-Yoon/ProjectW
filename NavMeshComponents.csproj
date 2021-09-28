@@ -56,13 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NavMeshExtension\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
-    <Compile Include="Assets\NavMeshExtension\NavMeshComponents\Scripts\NavMeshSurface.cs" />
-    <Compile Include="Assets\NavMeshExtension\NavMeshComponents\Scripts\NavMeshModifier.cs" />
-    <Compile Include="Assets\NavMeshExtension\NavMeshComponents\Scripts\NavMeshLink.cs" />
+    <Compile Include="Assets\Genshin\NavMeshExtension\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Genshin\NavMeshExtension\NavMeshComponents\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\Genshin\NavMeshExtension\NavMeshComponents\Scripts\NavMeshModifier.cs" />
+    <Compile Include="Assets\Genshin\NavMeshExtension\NavMeshComponents\Scripts\NavMeshLink.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\NavMeshExtension\NavMeshComponents\Scripts\NavMeshComponents.asmdef" />
+    <None Include="Assets\Genshin\NavMeshExtension\NavMeshComponents\Scripts\NavMeshComponents.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

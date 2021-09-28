@@ -14,6 +14,10 @@ namespace ProjectW.UI
 
         public BoDialogue boDialogue;
 
+        public override void Start()
+        {
+            base.Start();
+        }
         public void Update()
         {
             if (Input.GetKeyDown(KeyCode.E))
