@@ -76,7 +76,7 @@ namespace ProjectW.Object
 
             // 유저의 전체 아이템 정보에 변동이 생겼으므로, 전체 아이템 정보를 다시 서버에 보내준다.
             // (베스트는 변동된 아이템 정보만을 보내는 것.. 요걸 처리하려면 좀 귀찮아지므로..  
-            // 전체를 보내서 덮어쓰게함)
+            //  전체를 보내서 덮어쓰게함)
             DummyServer.Instance.userData.dtoItem = new DtoItem(GameManager.User.boItems);
             DummyServer.Instance.Save();
 

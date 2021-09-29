@@ -14,6 +14,7 @@ namespace ProjectW.Battle
     {
         public List<Actor> Characters { get; private set; } = new List<Actor>();
         public List<Actor> Monsters { get; private set; } = new List<Actor>();
+        public List<NPC> NPCS { get; private set; } = new List<NPC>();
 
         /// <summary>
         /// 활성화된 액터를 BM에 등록하는 기능
@@ -46,6 +47,7 @@ namespace ProjectW.Battle
             // 하나의 업데이트 콜백에서 처리할 시 일반적으로 훨씬 성능면에서 우수하다..
             ActorUpdate(Characters);
             ActorUpdate(Monsters);
+            NPCUpdate();
         }
 
         private void ActorUpdate(List<Actor> actors)
@@ -64,6 +66,31 @@ namespace ProjectW.Battle
                     --i;
                 }
             }
+        }
+
+        private void NPCUpdate()
+        { 
+            for (int i = 0; i < NPCS.Count; ++i)
+            {
+                if (NPCS[i] != null)
+                    NPCS[i].NPCUpdate();
+                else
+                { 
+                    NPCS.RemoveAt(i);
+                    --i;
+                }
+            }
+        }
+
+        public void ClearNPC()
+        {
+            for (int i = 0; i < NPCS.Count; ++i)
+            {
+                if (NPCS[i] != null)
+                    Destroy(NPCS[i].gameObject);
+            }
+
+            NPCS.Clear();
         }
     }
 }

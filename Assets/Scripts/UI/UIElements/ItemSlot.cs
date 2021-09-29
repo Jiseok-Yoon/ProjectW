@@ -1,4 +1,5 @@
 ﻿using ProjectW.DB;
+using ProjectW.Dummy;
 using ProjectW.Resource;
 using TMPro;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 
 namespace ProjectW.UI
 {
-    public class ItemSlot : MonoBehaviour/*, IPointerClickHandler*/
+    public class ItemSlot : MonoBehaviour /*, IPointerClickHandler*/
     {
         private TMP_Text itemAmount;
         public Image ItemImage { get; private set; }
@@ -52,55 +53,51 @@ namespace ProjectW.UI
         public void AmountUpdate()
         {
             itemAmount.text = BoItem.amount.ToString();
-            var userItems = GameManager.User.boItems;
-
-            if (BoItem.amount < 1)
-            {
-                userItems.Remove(BoItem);
-                return;
-            }
-            userItems[BoItem.slotIndex].amount = BoItem.amount;
         }
 
         //public void OnPointerClick(PointerEventData eventData)
         //{
-        //    // 아이템의 종류에 따라 사용처리
+        //    Debug.Log("슬롯 눌럿음 ㅋ");
 
+        //    // 예외처리 
+        //    // 슬롯에 아이템이 존재하는지 확인
         //    if (BoItem == null)
         //        return;
 
-        //    var inventory = transform.GetComponentInParent<UIInventory>();
+        //    // 유저 아이템 정보에서 수량이 0 이하라면 정보를 지움
+        //    var boItems = GameManager.User.boItems;
 
+        //    // 아이템의 종류에 따라 사용처리
         //    switch (BoItem.sdItem.itemType)
         //    {
         //        case Define.Item.ItemType.Equipment:
         //            // 장비라면 아이템을 장착할 수 있는 아이템인지 확인해서
         //            // 장착할 수 있다면 장착 처리
-        //            inventory.UseItem(BoItem);
         //            break;
         //        case Define.Item.ItemType.Expendables:
         //            // 소모품이라면 아이템을 사용 처리 후, 아이템의 개수를 - 시키고
-        //            // 아이템의 개수가 0이라면 인벤토리에서 제거
-        //            inventory.EquipItem(BoItem);
-        //            break;
+        //            // 아이템의 개수가 0 이라면 인벤토리에서 제거
+        //            --BoItem.amount;
+        //            if (BoItem.amount <= 0)
+        //            { 
+        //                boItems.Remove(BoItem);
+        //                SetSlot();
+        //            }
+        //            else
+        //                AmountUpdate();
+
+        //                break;
         //        case Define.Item.ItemType.Quest:
         //            break;
         //        case Define.Item.ItemType.Etc:
         //            break;
-        //        default:
-        //            break;
         //    }
+
+            
+
+        //    // 변경된 정보를 db 에 새로 씀
+        //    DummyServer.Instance.userData.dtoItem = new DtoItem(boItems);
+        //    DummyServer.Instance.Save();
         //}
-
-        public void Swap(ItemSlot originSlot)
-        {
-            if (originSlot.BoItem == null)
-                return;
-
-            var targetItem = BoItem?.DeepCopy();
-            SetSlot(originSlot.BoItem);
-            originSlot.SetSlot(targetItem);
-
-        }
     }
 }

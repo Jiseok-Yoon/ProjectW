@@ -39,5 +39,10 @@ namespace ProjectW.Dummy
         {
             responsHandler.HandleSuccess(SerializationUtil.ToJson(serverData.userData.dtoItem));
         }
+
+        public void GetQuest(int uniqueId, ResponsHandler<DtoQuest> responsHandler)
+        {
+            responsHandler.HandleSuccess(SerializationUtil.ToJson(serverData.userData.dtoQuest));
+        }
     }
 }

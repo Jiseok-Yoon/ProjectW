@@ -17,6 +17,7 @@ namespace ProjectW.Network
         public ResponsHandler<DtoCharacter> characterHandler;
         public ResponsHandler<DtoStage> stageHandler;
         public ResponsHandler<DtoItem> itemHandler;
+        public ResponsHandler<DtoQuest> questsHandler;
 
         public LoginHandler()
         {
@@ -24,6 +25,7 @@ namespace ProjectW.Network
             characterHandler = new ResponsHandler<DtoCharacter>(GetCharacterSuccess, OnFailed);
             stageHandler = new ResponsHandler<DtoStage>(GetStageSuccess, OnFailed);
             itemHandler = new ResponsHandler<DtoItem>(GetItemSuccess, OnFailed);
+            questsHandler = new ResponsHandler<DtoQuest>(GetQuestSuccess, OnFailed);
         }
 
         public void Connect()
@@ -53,6 +55,7 @@ namespace ProjectW.Network
         { 
             GameManager.User.boStage = new BoStage(dtoStage);
 
+            // 다음으로 아이템 정보를 요청한다.
             ServerManager.Server.GetItem(0, itemHandler);
         }
 
@@ -64,7 +67,8 @@ namespace ProjectW.Network
         {
             GameManager.User.boCharacter = new BoCharacter(dtoCharacter);
 
-            OnLoginFinished();
+            // 다음으로 퀘스트 정보를 요청한다.
+            ServerManager.Server.GetQuest(0, questsHandler);
         }
 
         /// <summary>
@@ -100,6 +104,7 @@ namespace ProjectW.Network
                 boItems.Add(boItem);
             }
 
+            // 다음으로 캐릭터 정보를 요청한다.
             ServerManager.Server.GetCharacter(0, characterHandler);
 
             void SetItem(BoItem boItem, DtoItemElement dtoItemElement) 
@@ -107,6 +112,13 @@ namespace ProjectW.Network
                 boItem.slotIndex = dtoItemElement.slotIndex;
                 boItem.amount = dtoItemElement.amount;
             }
+        }
+
+        private void GetQuestSuccess(DtoQuest dtoQuest)
+        {
+            GameManager.User.boQuest = new BoQuest(dtoQuest);
+
+            OnLoginFinished();
         }
 
         /// <summary>

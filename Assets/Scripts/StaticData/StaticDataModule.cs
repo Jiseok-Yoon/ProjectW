@@ -20,8 +20,8 @@ namespace ProjectW.SD
         public List<SDGrowthStat> sdGrowthStats;
         public List<SDMonster> sdMonsters;
         public List<SDItem> sdItems;
-        public List<SDNpc> sdNpc;
-        public List<SDQuest> sdQuest;
+        public List<SDNPC> sdNPCS;
+        public List<SDQuest> sdQuests;
         public List<SDString> sdString;
 
         public void Initialize()
@@ -33,8 +33,8 @@ namespace ProjectW.SD
             loader.Load(out sdGrowthStats);
             loader.Load(out sdMonsters);
             loader.Load(out sdItems);
-            loader.Load(out sdNpc);
-            loader.Load(out sdQuest);
+            loader.Load(out sdNPCS);
+            loader.Load(out sdQuests);
             loader.Load(out sdString);
         }
 

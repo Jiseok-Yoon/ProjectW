@@ -1,8 +1,8 @@
 ﻿[
   {
     "index": 1000,
-    "name": "거창한 시작",
-    "questType": "Collect",
+    "name": "첫 사냥",
+    "questType": "Hunt",
     "antecedentQuest": [
       0
     ],

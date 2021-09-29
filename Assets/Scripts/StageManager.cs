@@ -3,7 +3,6 @@ using ProjectW.DB;
 using ProjectW.Define;
 using ProjectW.Object;
 using ProjectW.Resource;
-using ProjectW.SD;
 using ProjectW.UI;
 using ProjectW.Util;
 using System;
@@ -37,8 +36,8 @@ namespace ProjectW
         /// </summary>
         private float maxSpawnTime;
 
+        private Transform npcHolder;
         private Transform monsterHolder;
-        private Transform NPCHolder;
 
         /// <summary>
         /// 현재 스테이지 인스턴스 객체
@@ -59,7 +58,8 @@ namespace ProjectW
 
         /// <summary>
         /// 스테이지 전환 시 필요한 리소스를 불러오고 인스턴스 생성 및 데이터 바인딩 작업
-        /// 이 메서드를 호출하는 시점은 로딩 씬이 활성화되어있는 상태..
+        /// 이 메서드를 호출하는 시점은 로딩 씬이 활성화되어있는 상태
+        /// ..
         /// </summary>
         /// <returns></returns>
         public IEnumerator ChangeStage()
@@ -90,7 +90,10 @@ namespace ProjectW
             // 이전 스테이지에서 사용하던 정보들을 비우는 작업
             spawnAreaBounds.Clear(); 
             ObjectPoolManager.Instance.ClearPool<Monster>(PoolType.Monster);
-            BattleManager.Instance.Monsters.Clear();
+
+            var battleManager = BattleManager.Instance;
+            battleManager.Monsters.Clear();
+            battleManager.ClearNPC();
 
             // 현재 스테이지에서 사용될 리소스를 부르고 인스턴스를 생성하는 작업
             var sd = GameManager.SD;
@@ -181,39 +184,59 @@ namespace ProjectW
         }
 
         /// <summary>
-        /// 
+        /// NPC를 생성하는 기능
         /// </summary>
         private void SpawnNPC()
         {
-            if (NPCHolder == null)
-            {
-                NPCHolder = new GameObject("NPCHolder").transform;
-                NPCHolder.position = Vector3.zero;
-            }
+            npcHolder ??= new GameObject("NPCHolder").transform;
 
             // 현재 스테이지 정보를 참조하여
             // NPC 테이블에 접근해서 현재 스테이지에 존재하는 NPC 들의 정보를 받아온다.
-
-            var npcList = new List<NPC>();
-
             var sdStage = GameManager.User.boStage.sdStage;
+            var npcs = GameManager.SD.sdNPCS.Where(_ => _.stageRef == sdStage.index).ToList();
 
-            foreach (SDNpc sdNPC in GameManager.SD.sdNpc)
-            {
-                if (sdNPC.stageRef != sdStage.index)
-                    continue;
+            var npcInstances = BattleManager.Instance.NPCS;
 
-                var npcResource = ResourceManager.Instance.LoadObject(sdNPC.ResourcePath);
-                var npc = Instantiate(npcResource);
-                npc.transform.SetParent(NPCHolder);
-                npc.transform.position = new Vector3(sdNPC.stagePos[0], sdNPC.stagePos[1], sdNPC.stagePos[2]);
-                npc.transform.eulerAngles = new Vector3(sdNPC.stagePos[3], sdNPC.stagePos[4], sdNPC.stagePos[5]);
-            }
+            var boQuest = GameManager.User.boQuest;
 
 
+            // KEEP 일단 보류
             // 받아온 NPC 들 중에 유저 DB에서 해당 유저가 해금한 NPC인지 확인하여
             // 해금된 NPC라면 생성한다.
+            for (int i = 0; i < npcs.Count; ++i)
+            {
+                var isSpawn = false;
 
+                // npc를 생성하기 위해 완료해야하는 퀘스트의 정보를 배열로 복수개를 받는 것이 아니라
+                // 복수 개의 퀘스트를 완료해야 하더라도, 복수개를 퀘스트를 완료할 시 복수개의 퀘스트의 완료를 나타내는 하나의 퀘스트 인덱스를
+                // 만들어서, 최종적으로 데이터를 받을 때 단 하나의 퀘스트 인덱스만 받게 만든다면, for문 순회 자체를 2중으로 할 필요가 없어짐
+                for (int j = 0; j < npcs[i].needQuestRef.Length; ++j)
+                {
+                    if (npcs[i].needQuestRef[j] == 0)
+                    {
+                        isSpawn = true;
+                        break;
+                    }
+                    else
+                    {
+                        isSpawn = boQuest.completedQuests.Where(_ => _.index == npcs[i].needQuestRef[j]).Count() > 0;
+                        if (!isSpawn)
+                            break;
+                    }
+
+                }
+
+                if (!isSpawn)
+                    continue;
+
+                var npcObj = Instantiate(ResourceManager.Instance.LoadObject(npcs[i].resourcePath), npcHolder);
+                var npc = npcObj.GetComponent<Object.NPC>();
+
+                var boNPC = new BoNPC(npcs[i]);
+                npc.Initialize(boNPC);
+
+                npcInstances.Add(npc);
+            }
         }
 
         /// <summary>

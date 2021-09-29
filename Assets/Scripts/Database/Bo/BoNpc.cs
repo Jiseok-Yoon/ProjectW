@@ -1,18 +1,17 @@
-﻿using ProjectW.SD;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using ProjectW.SD;
 
 namespace ProjectW.DB
 {
     [Serializable]
-    public class BoNpc
+    public class BoNPC 
     {
-        public SDNpc sdNPC;
+        // 현재 NPC가 플레이어와 상호작용 중인지를 나타내는 필드
+        public bool isInteraction;
 
-        public BoNpc(SDNpc sdNPC)
+        public SDNPC sdNPC;
+
+        public BoNPC(SDNPC sdNPC)
         {
             this.sdNPC = sdNPC;
         }

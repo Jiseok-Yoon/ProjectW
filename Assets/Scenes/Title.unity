@@ -784,10 +784,15 @@ MonoBehaviour:
         atkInterval: 0
         growthStatRef: 0
         resourcePath: 
+    boItems: []
   sd:
     sdCharacters: []
     sdStages: []
     sdMonsters: []
+    sdItems: []
+    sdNPCS: []
+    sdQuests: []
+    sdString: []
 --- !u!4 &849261402
 Transform:
   m_ObjectHideFlags: 0

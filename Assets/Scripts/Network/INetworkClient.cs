@@ -41,5 +41,7 @@ namespace ProjectW.Network
         /// <param name="uniqueId"></param>
         /// <param name="responsHandler"></param>
         void GetItem(int uniqueId, ResponsHandler<DtoItem> responsHandler);
+
+        void GetQuest(int uniqueId, ResponsHandler<DtoQuest> responsHandler);
     }
 }

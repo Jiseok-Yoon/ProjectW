@@ -17,12 +17,16 @@ namespace ProjectW.DB
             amount = 1;
             this.sdItem = sdItem;
         }
-        public virtual BoItem DeepCopy()
+
+        public BoItem DeepCopy()
         {
-            var boItem = new BoItem(sdItem);
-            boItem.slotIndex = slotIndex;
-            boItem.amount = amount;
-            return boItem;
+            // MemberwiseClone을 통해 값 타입의 필드를 전부 복사함.
+            BoItem clone = (BoItem)this.MemberwiseClone();
+            // 그 후 참조 타입만 별도로 처리
+            // SDItem은 참조타입이지만, SD Module 쪽에서 전부 참조하여 사용하므로
+            // 따로 객체를 복사할 필요가 없음.. 한마디로 같은 공간을 가리켜도 상관없음
+
+            return clone;
         }
     }
 
@@ -36,17 +40,6 @@ namespace ProjectW.DB
         {
             isEquip = false;
             reinforceValue = 0;
-        }
-
-        public new BoEquipment DeepCopy()
-        {
-            var boEquipment = new BoEquipment(sdItem);
-            boEquipment.isEquip = isEquip;
-            boEquipment.reinforceValue = reinforceValue;
-            boEquipment.slotIndex = slotIndex;
-            boEquipment.amount = amount;
-            return boEquipment;
-
         }
     }
 }

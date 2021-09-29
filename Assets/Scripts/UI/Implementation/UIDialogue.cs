@@ -1,9 +1,6 @@
-using ProjectW.DB;
-using ProjectW.UI;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
+using ProjectW.DB;
 
 namespace ProjectW.UI
 {
@@ -14,24 +11,14 @@ namespace ProjectW.UI
 
         public BoDialogue boDialogue;
 
-        public override void Start()
-        {
-            base.Start();
-        }
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                NextDialogue();
-            }
-        }
-
         public void SetDialogue(BoDialogue boDialogue)
         {
             this.boDialogue = boDialogue;
 
             speakerName.text = boDialogue.speaker;
             dialogue.text = boDialogue.speeches[0];
+
+            Open();
         }
 
         /// <summary>
@@ -56,7 +43,7 @@ namespace ProjectW.UI
         public void EndDialogue()
         {
             Close();
+            boDialogue = null;
         }
     }
-
 }

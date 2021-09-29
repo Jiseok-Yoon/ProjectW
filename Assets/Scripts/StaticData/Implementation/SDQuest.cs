@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ProjectW.Define.Quest;
 
 namespace ProjectW.SD
 {
@@ -11,7 +6,7 @@ namespace ProjectW.SD
     public class SDQuest : StaticData
     {
         public string name;
-        public QuestType questType;
+        public Define.Quest.QuestType type;
         public int[] antecedentQuest;
         public int[] target;
         public int[] targetDetail;
