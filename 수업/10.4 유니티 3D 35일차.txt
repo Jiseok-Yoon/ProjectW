@@ -1,0 +1,72 @@
+UIDialogue  UI 배치.
+
+버튼 홀더 만들고 VericalLayoutGroup
+
+그 밑에 버튼은 앵커는 신경 안써도 됨. 레이아웃 그룹에 의해서 배치.
+버튼 텍스트는 좌측 가운데 정렬.
+그리고 중요한건 Overflow Ellipsis
+
+글자가 TransForm 영역 벗어나면 ...으로 자동변경됨.
+
+그리고 프리팹만들기.
+
+그다음 UIQuest UI 만들기.
+
+
+QuestList 하나 QuestOrder창 하나.
+받을때랑 확인할 때.
+
+그리고 QuestList에서 Scroll View 생성
+안에 보면 ViewPort와 스크롤 바가 있음.
+여기서 스크롤바 지워버리면 바 없음.
+스크롤기능 담당은 ScrollRect가 담당해서 상관없음. Horizontal과 vertical 옵션이 있음.
+
+뷰포트 영역이 화면에 보여주고자 하는 영역. 실제 스크롤 될 수 있는 객체는 많아도 뷰포트 영역만 보이게 되는 것.
+그게 가능한 이유는 Mask 컴포넌트가 있기 때문. 마스크를 통해 뷰포트 영역. 씬에서 뷰포트 영역만큼만 보임.
+뷰포트의 자식으로 등장하는건 Content 객체가 있어야 함. 거기서 등장.
+
+그리고 Contet의 Content SizeFitter이랑 VerticalLayoutGroup 있어야 함.
+
+ContentSizeFitter는 객체 추가할 때 이 녀석 사이즈 어떻게 컨트롤 할 것인지.
+여기서 Unconstrained는 가로 사이즈는 놔두는거고
+PreferredSize는 알아서 
+
+UI만들고나서 스크립트 작성.
+Define에 QuestWindow 에넘 작성.
+
+        [Header("Quest List Window Ref")]
+
+애트리뷰트 써서 정리
+
+그리고 퀘스트 데이터 부족한게 있었음. DtoQuest에;
+퀘스트 진행상황에 대한 데이터 정보가 부족함. 별도의 DToQuestProgress 클래스 만들기.
+당연히 BO도 변경
+
+            details = (int[])dtoQuestProgress.details.Clone();
+
+디테일 받아올때 깊은복사. Dto는 메모리 해제해야하니까.
+
+참조 채우기 UIQuest 달고
+
+UIDialogue에 버튼홀더 참조 필드 추가.
+
+
+할거
+1. 다이얼로그 버튼, 퀘스트 슬롯 프리팹에 대한 스크립트 생성(풀러블 객체)
+
+다이얼로그 버튼은 DialogueButton, QuestSlot <- 해당 이름으로 스크립트 생성
+
+2. NPC에게 대화를 걸 시, 해당 NPC가 가지고 있는 퀘스트가 다이얼로그 버튼으로 표현됨.
+3. 해당 퀘스트 다이얼로그 버튼을 누를 시, 수주 창이 오픈
+4. 수주창에서 퀘스트 수락(수락 or 거절 누를 시 창 자동 종료)
+5. J버튼으로 퀘스트 목록 창을 오픈하여 확인 시, 방금 수락한 퀘스트 목록이 리스트에 표현됨.
+
+데이터는 지금것 기반으로하되 만들어도 됨.
+
+수주창은 오직 다이얼로그 버튼으로만 활성화 됨
+리스트 창은 오직 J버튼으로만 활성화 됨
+
++ Alpha
+-> 진행, 완료 탭 별로 목록을 별도로 띄움.
+
+

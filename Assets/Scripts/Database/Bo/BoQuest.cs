@@ -10,17 +10,17 @@ namespace ProjectW.DB
     [Serializable]
     public class BoQuest
     {
-        public List<SDQuest> progressQuests;
+        public List<BoQuestProgress> progressQuests;
         public List<SDQuest> completedQuests;
 
         public BoQuest(DtoQuest dtoQuest)
         {
-            progressQuests = new List<SDQuest>();
+            progressQuests = new List<BoQuestProgress>();
             completedQuests = new List<SDQuest>();
 
-            for (int i = 0; i < dtoQuest.progressQuests.Count(); ++i)
+            for (int i = 0; i < dtoQuest.progressQuests.Length; ++i)
             {
-                progressQuests.Add(GameManager.SD.sdQuests.Where(_ => _.index == dtoQuest.progressQuests[i]).SingleOrDefault());
+                progressQuests.Add(new BoQuestProgress(dtoQuest.progressQuests[i]));
             }
             
             for (int i = 0; i < dtoQuest.completedQuests.Count(); ++i)
@@ -28,6 +28,18 @@ namespace ProjectW.DB
                 completedQuests.Add(GameManager.SD.sdQuests.Where(_ => _.index == dtoQuest.completedQuests[i]).SingleOrDefault());
             }
 
+        }
+    }
+
+    [Serializable]
+    public class BoQuestProgress
+    {
+        public int[] details;
+        public SDQuest sdQuest;
+        public BoQuestProgress(DtoQuestProgress dtoQuestProgress)
+        {
+            details = (int[])dtoQuestProgress.details.Clone();
+            sdQuest = GameManager.SD.sdQuests.Where(_ => _.index == dtoQuestProgress.index).SingleOrDefault();
         }
     }
 }

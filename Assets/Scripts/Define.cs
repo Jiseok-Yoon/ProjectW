@@ -94,5 +94,6 @@ namespace ProjectW.Define
     public class Quest
     {
         public enum QuestType { Hunt, Collect, Adventure, }
+        public enum QuestWindow { List, Order }
     }
 }

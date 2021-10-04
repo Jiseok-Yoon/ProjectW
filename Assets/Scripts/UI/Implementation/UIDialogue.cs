@@ -9,6 +9,7 @@ namespace ProjectW.UI
         public TextMeshProUGUI speakerName;
         public TextMeshProUGUI dialogue;
 
+        public Transform buttonHolder;
         public BoDialogue boDialogue;
 
         public void SetDialogue(BoDialogue boDialogue)

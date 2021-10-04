@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\UI\Implementation\UITitle.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoUser.cs" />
     <Compile Include="Assets\Scripts\Database\Dto\DtoCharacter.cs" />
+    <Compile Include="Assets\Scripts\Database\Dto\DtoQuest.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\EffectsScene.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoStage.cs" />
     <Compile Include="Assets\Scripts\UI\Implementation\UIInventory.cs" />
@@ -130,14 +131,15 @@
     <Compile Include="Assets\Scripts\UI\Implementation\UIBattle.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\MouseOrbit.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\RotateObject.cs" />
+    <Compile Include="Assets\Scripts\Database\Bo\BoQuest.cs" />
     <Compile Include="Assets\Scripts\Network\ServerManager.cs" />
     <Compile Include="Assets\Scripts\Resource\SpriteLoader.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\DelayObjectMake.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoActor.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoMonster.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Move\MoveToObject.cs" />
-    <Compile Include="Assets\Scripts\Database\Dto\DtoQuest.cs" />
-    <Compile Include="Assets\Scripts\Database\Bo\BoQuest.cs" />
+    <Compile Include="Assets\Scripts\UI\Implementation\UIQuest.cs" />
+    <Compile Include="Assets\Scripts\UI\UIElements\DialogueButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
