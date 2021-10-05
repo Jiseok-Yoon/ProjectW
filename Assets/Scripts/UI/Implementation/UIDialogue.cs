@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using ProjectW.DB;
+using ProjectW.Util;
+using ProjectW.Define;
 
 namespace ProjectW.UI
 {
@@ -18,8 +20,22 @@ namespace ProjectW.UI
 
             speakerName.text = boDialogue.speaker;
             dialogue.text = boDialogue.speeches[0];
-
+            SetDialogueButton();
             Open();
+        }
+
+        public void SetDialogueButton()
+        {
+            var dialogueButtonPool = ObjectPoolManager.Instance.GetPool<DialogueButton>(PoolType.DialogueButton);
+            var sdQuests = GameManager.SD.sdQuests;
+
+            for (int i = 0; i < boDialogue.orderableQuests.Length; ++i)
+            {
+                var button = dialogueButtonPool.GetPoolableObject();
+                var sdQuest = sdQuests.Find(_ => _.index == boDialogue.orderableQuests[i]);
+                button.SetDialogueButton(sdQuest);
+                button.transform.SetParent(buttonHolder);
+            }
         }
 
         /// <summary>

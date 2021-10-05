@@ -59,8 +59,61 @@ namespace ProjectW.Object
             // 해당 특정문자로 문자열을 나눈다.
             boDialogue.speeches = speech.Contains("/") ? speech.Split('/') : new string[] { speech };
 
+            SetDialogueQuest(boDialogue);
+
             // 설정된 다이얼로그 데이터를 UI 다이얼로그에 적용
             uiDialogue.SetDialogue(boDialogue);
+        }
+
+        public void SetDialogueQuest(BoDialogue boDialogue)
+        {
+            var questRefList = boNPC.sdNPC.questRef.ToList();
+            var progressQuests = GameManager.User.boQuest.progressQuests;
+            var completedQuests = GameManager.User.boQuest.completedQuests;
+            var sdQuests = GameManager.SD.sdQuests;
+
+            for (int i = 0; i < progressQuests.Count(); ++i)
+            {
+                if (questRefList.Contains(progressQuests[i].sdQuest.index))
+                    questRefList.Remove(progressQuests[i].sdQuest.index);
+            }
+
+            for (int i = 0; i < completedQuests.Count(); ++i)
+            {
+                if (questRefList.Contains(completedQuests[i].index))
+                    questRefList.Remove(completedQuests[i].index);
+            }
+
+            for (int i = 0; i < questRefList.Count(); ++i)
+            {
+                bool isAntecedentQuestCleared = false;
+                var sdQuest = sdQuests.Where(_ => _.index == questRefList[i]).SingleOrDefault();
+                var antecedentQuests = sdQuest.antecedentQuest;
+
+                if (antecedentQuests.Length != 1 || antecedentQuests[0] != 0)
+                {
+                    for (int j = 0; j < antecedentQuests.Length; ++j)
+                    {
+                        for (int k = 0; k < completedQuests.Count(); ++k)
+                        {
+                            if (completedQuests[k].index == antecedentQuests[j])
+                                isAntecedentQuestCleared = true;
+                        }
+                    }
+                }
+                else
+                {
+                    isAntecedentQuestCleared = true;
+                }
+
+                if (!isAntecedentQuestCleared)
+                {
+                    questRefList.RemoveAt(i);
+                    --i;
+                }
+            }
+
+            boDialogue.orderableQuests = questRefList.ToArray();
         }
 
         /// <summary>

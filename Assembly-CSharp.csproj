@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\Object\Actor.cs" />
     <Compile Include="Assets\Scripts\Resource\ResourceManager.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\_ObjectMakeBase.cs" />
+    <Compile Include="Assets\Scripts\UI\Implementation\UIQuest.cs" />
     <Compile Include="Assets\Scripts\UI\UIElements\HpBar.cs" />
     <Compile Include="Assets\Scripts\StaticData\Implementation\SDItem.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\MultiObjectMake.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets\Scripts\UI\Implementation\UIBattle.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\MouseOrbit.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Object\RotateObject.cs" />
+    <Compile Include="Assets\Scripts\UI\UIElements\DialogueButton.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoQuest.cs" />
     <Compile Include="Assets\Scripts\Network\ServerManager.cs" />
     <Compile Include="Assets\Scripts\Resource\SpriteLoader.cs" />
@@ -138,8 +140,7 @@
     <Compile Include="Assets\Scripts\Database\Bo\BoActor.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoMonster.cs" />
     <Compile Include="Assets\FantasySpellsEffectsPack\Scripts\Move\MoveToObject.cs" />
-    <Compile Include="Assets\Scripts\UI\Implementation\UIQuest.cs" />
-    <Compile Include="Assets\Scripts\UI\UIElements\DialogueButton.cs" />
+    <Compile Include="Assets\Scripts\UI\UIElements\QuestSlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

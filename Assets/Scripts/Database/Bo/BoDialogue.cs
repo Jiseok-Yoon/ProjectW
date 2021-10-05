@@ -8,5 +8,6 @@ namespace ProjectW.DB
         public int currentSpeech;
         public string speaker;
         public string[] speeches;
+        public int[] orderableQuests;
     }
 }

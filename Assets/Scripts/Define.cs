@@ -14,7 +14,7 @@ namespace ProjectW.Define
     public enum IntroPhase { Start, ApplicationSetting, Server, StaticData,
     UserData, Resource, UI, Complete }
 
-    public enum PoolType { Character, Monster, Projectile, Item, HpBar }
+    public enum PoolType { Character, Monster, Projectile, Item, HpBar, DialogueButton, QuestSlot }
 
     public class Camera
     {
