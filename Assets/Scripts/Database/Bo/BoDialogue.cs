@@ -6,8 +6,8 @@ namespace ProjectW.DB
     public class BoDialogue
     {
         public int currentSpeech;
+        public int[] quests;
         public string speaker;
         public string[] speeches;
-        public int[] orderableQuests;
     }
 }

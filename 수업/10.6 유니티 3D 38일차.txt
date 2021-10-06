@@ -1,0 +1,147 @@
+이전 2번 NPC에게 대화거는 부분은 CheckInteraction()에서 Ondialogue() 들어옴.
+여기서 문제는 가지고 있는 퀘스트가 다이얼로그 버튼으로 표시된다는 것.
+NPC가 가지고 있고 내가 받을 수도 있는 퀘스트여야 함.
+받을 수 있는 퀘스트를 추리기 위해 진행 및 완료 퀘스트를 받아야 함.
+
+var boQuest = GameManager.User.boQuest;
+
+Linq Except 두 집합의 차집합을 구하는 메서드. 배열이나 컬렉션 등.
+
+var canOrderQuests = boNPC.sdNPC.questRef.Except(boQuest.progressQuests.Select(_ => _.sdQuest.index));
+
+Except를 호출하는 컬렉션을 기준으로 두번째 컬렉션에 없는 요소가 반환이 됨. 
+이때 IEnumable로 리턴이 됨.
+
+canOrderQuests = canOrderQuests.Except(boQuest.completedQuests.Select(_ => _.index));
+
+var orderQuests = canOrderQuests.ToList();
+var sdQuests = GameManager.SD.sdQuests;
+
+for (int i = 0; i < orderQuests.Count; ++i)
+{
+var antecedentQuest = sdQuests.Where(_ => _.index == orderQuests[i]).SingleOrDefault()?.antecedentQuest;
+
+if (antecedentQuest[0] == 0)
+continue;
+
+//Intersect는 교집합.
+
+if (antecedentQuest.Length != antecedentQuest.Intersect(boQuest.completedQuests.Select(_=>_.index)).Count())
+{
+orderQuests.RemoveAt(i);
+--i;
+}
+
+boDialogue.quests = orderQuests.ToArray();
+
+
+다이얼로그 버튼 추가할 메소드
+OnDialogueButtons()
+{
+var pool = ObjectPoolManager.Instance.GetPool<DialogueButton>(Define.PoolType.DialogueButton);
+
+for (int i = 0; i < boDialogue.quests.Length; ++i)
+{
+var button = pool.GetPoolableObject();
+
+button.transform.SetParent(buttonHolder);
+
+// 버튼 타입은 필수 뒤쪽은 타입에 따른 추가 데이터
+button.Initialize(DialogueButtonType.Quest, boDialogue.quests[i]);
+dialogueButtons.Add(button);
+button.gameObject.SetActive(true);
+}
+// 아래부터는 NPC에 따라 버튼의 종류가 달라짐
+// -> 다이얼로그 UI를 설정할 때 BoDialogue에 추가적으로 NPCType을 받아와야 한다는 의미.
+// NPC 종륟에 따라 추가적인 다이얼로그 버튼 활성
+
+
+}
+
+
+다이얼로그 버튼즈
+// 현재 화럿ㅇ화된 다이얼로그 버튼들의 참조를 갖는 리스트
+private List<DialogueButton> dialogueButtons = new List<DialogueButton>();
+
+다이얼로그 버튼에서 
+public TextMeshProUGUI title;
+public Image icon;
+public Button btn;
+
+Define에 다음 추가.
+public class Dialogue
+    {
+        public enum DialogueButtonType { Shop, Quest }
+    }
+
+public void Initialize(DialogueButtonType type, params int[] datas)
+{
+// 버튼 초기화 시, 변경될 데이터는
+// 버튼 종류에 따라 아이콘 이미지 변경
+// 버튼 종류 및 데이터에 따라 텍스트 변경
+// 버튼 종류에 따라 버튼에 바인딩하는 이벤트도 변경되어야 함
+
+var spriteKey = string.Empty;
+var text = string.Empty;
+
+switch (type)
+{
+case DialogueButtonType.Shop:
+// 원래는 이것들도 테이블이 따로 있어야 함.
+spriteKey = "gem";
+text = "상  점";
+btn.onClick.AddListener(OnClickShop);
+break;
+case DialogueButtonType.Quest:
+spriteKey = "exclamation_mark";
+var sdQuest = GamaManager.SD.sdQuests.Where(_ => _.index == datas[0]).SingleOrDefualt();
+text = sdQuest.name;
+btn.onClick.AddListener(() => { OnClickQuest(sdQuest); });
+break;
+}
+
+icon.sprite = SpriteLoader.GetSprite(AtlasType.IconAtlas, spriteKey);
+title.text = text;
+
+}
+
+private void OnClickShop()
+{
+}
+
+
+private void OnClickQuest(SDQuest sdQuest)
+{
+var uiWindowManager = UIWindowManager.Instance;
+
+uiWindowManager.GetTopWindow().Close();
+UIWindowManager.Instance.GetWindow<UIQuest>().Open(Define.Quest.QuestWindow.Order, sdQuest);
+
+UI Quest 변경
+publiv void Open(QuestWindow questWindow, SDQuest orderQuest = null)
+{
+
+}
+
+그리고 UIDialogue에서 Close 오버라이딩 해서 EndDialogue 기능을 해주게 변경해야 함. 엔드 다이얼로그는 없애고
+
+public override void Close(bool force = false)
+{
+base.Close(force);
+boDialogue = null;
+var pool = ObejectPoolManager.Instance.GetPool<DialogueButton>(Define.PoolType.DialogueButton);
+
+for (int i = 0; i < dialogueButtons.Count; ++i)
+{
+pool.ReturnPoolableObejct(dialogueButtons[i]);
+}
+dialogueButtons.Clear();
+
+}
+
+그리고 IconAtlas 하나를 추가.
+
+
+
+유니티 파일을 옮겨야하는데 프로젝트가 너무 큰 경우 지우면 되는 파일은 Library 폴더 지워도 되고 obj 폴더 지우고 .vs 숨김폴더 지워도 됨. Logs도 지워도 됨. 근데 용량은 얼마 안함.
+Library 폴더는 이 컴퓨터 저 컴퓨터 옮겨다녔으면 그 때마다 컴퓨터에 깔린 버전 다르면 Library 폴더 용량이 엄청나게 늘어날 것.

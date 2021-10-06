@@ -14,7 +14,7 @@ namespace ProjectW.Define
     public enum IntroPhase { Start, ApplicationSetting, Server, StaticData,
     UserData, Resource, UI, Complete }
 
-    public enum PoolType { Character, Monster, Projectile, Item, HpBar, DialogueButton, QuestSlot }
+    public enum PoolType { Character, Monster, Projectile, Item, HpBar, QuestSlot, DialogueButton }
 
     public class Camera
     {
@@ -78,7 +78,7 @@ namespace ProjectW.Define
 
     public class Resource
     {
-        public enum AtlasType { ItemAtlas }
+        public enum AtlasType { ItemAtlas, IconAtlas }
     }
 
     public class Item
@@ -88,7 +88,12 @@ namespace ProjectW.Define
 
     public class NPC
     {
-        public enum NPCType { None, }
+        public enum NPCType { None,  }
+    }
+
+    public class Dialogue
+    {
+        public enum DialogueButtonType { Shop, Quest }
     }
 
     public class Quest

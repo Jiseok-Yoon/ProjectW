@@ -1,15 +1,10 @@
-using ProjectW.Util;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using ProjectW.Util;
 using UnityEngine;
 
 namespace ProjectW.UI
 {
     public class QuestSlot : MonoBehaviour, IPoolableObject
     {
-        public bool CanRecycle { get; set; }
-
+        public bool CanRecycle { get; set; } = true;
     }
-
 }

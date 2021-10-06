@@ -41,7 +41,12 @@ namespace ProjectW.Network
         /// <param name="uniqueId"></param>
         /// <param name="responsHandler"></param>
         void GetItem(int uniqueId, ResponsHandler<DtoItem> responsHandler);
-
+        
+        /// <summary>
+        /// 서버에 유저의 퀘스트 정보를 요청하는 메서드
+        /// </summary>
+        /// <param name="uniqueId"></param>
+        /// <param name="responsHandler"></param>
         void GetQuest(int uniqueId, ResponsHandler<DtoQuest> responsHandler);
     }
 }

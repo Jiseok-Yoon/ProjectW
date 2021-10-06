@@ -2,6 +2,7 @@
 using UnityEngine;
 using ProjectW.DB;
 using ProjectW.UI;
+using System.Collections.Generic;
 
 namespace ProjectW.Object
 {
@@ -49,6 +50,47 @@ namespace ProjectW.Object
             var boDialogue = new BoDialogue();
             boDialogue.speaker = boNPC.sdNPC.name;
 
+            // NPC에게서 수주할 수 있는 퀘스트 목록만 추림
+            //  -> 확인을 위해 유저 퀘스트 데이터를 가져옴
+            var boQuest = GameManager.User.boQuest;
+
+            // Linq Except 두 집합의 차집합을 구하는 메서드
+            // (이 때, 반환되는 요소는 Except을 호출하는 집합을 기준으로 두번째 집합에 없는 요소들이 반환)
+
+            // 유저가 이미 진행중인 퀘스트라면 제외
+            // NPC의 인덱스 목록 이랑 유저가 진행중인 퀘스트 인덱스 목록
+            var canOrderQuests = boNPC.sdNPC.questRef.Except(boQuest.progressQuests.Select(_ => _.sdQuest.index));
+            // 유저가 이미 완료한 퀘스트라면 제외
+            canOrderQuests = canOrderQuests.Except(boQuest.completedQuests.Select(_ => _.index));
+
+            // orderQuests -> 유저가 진행중이 아니고, 완료하지 않은 퀘스트 인덱스만 남아있음
+            var orderQuests = canOrderQuests.ToList();
+            var sdQuests = GameManager.SD.sdQuests;
+            // 남은 퀘스트 중에 선행 퀘스트를 완료해야만 진행할 수 있는 퀘스트인가?
+            // 위의 과정을 거쳐 걸려진 퀘스트들의 선행퀘스트 목록을 가져옴
+            for (int i = 0; i < orderQuests.Count; ++i)
+            {
+                // 퀘스트 테이블에서 추려낸 퀘스트가 선행퀘스 데이터가 존재하는지, 존재한다면 선행퀘스트 인덱스 목록을 가져옴
+                var antecedentQuest = sdQuests.Where(_ => _.index == orderQuests[i]).SingleOrDefault()?.antecedentQuest;
+
+                // 선행 퀘스트 목록의 첫번째 원소의 값이 0 이라면? 선행퀘스트가 존재하지 않는다는 것
+                if (antecedentQuest[0] == 0)
+                    continue;
+
+                // Linq Intersect 두 집합의 교집합을 구하는 메서드 
+                // 구한 교집합의 길이가 선행퀘스트 목록의 길이와 같다면? 선행퀘스트를 전부 완료했다는 것
+                if (antecedentQuest.Length !=
+                    antecedentQuest.Intersect(boQuest.completedQuests.Select(_ => _.index)).Count())
+                {
+                    // 선행퀘스트를 전부 완료하지 않았으므로, 수주 퀘스트 목록에서 지워버린다.
+                    orderQuests.RemoveAt(i);
+                    --i;
+                }
+            }
+
+            // 선행퀘스트 여부까지 걸러 최종적으로 수주할 수 있는 퀘스트목록을 구했으므로 boDialogue에 설정
+            boDialogue.quests = orderQuests.ToArray();
+            
             // 기본 대화 중 하나를 랜덤하게 선택
             var randIndex = Random.Range(0, boNPC.sdNPC.speechRef.Length);
 
@@ -59,61 +101,8 @@ namespace ProjectW.Object
             // 해당 특정문자로 문자열을 나눈다.
             boDialogue.speeches = speech.Contains("/") ? speech.Split('/') : new string[] { speech };
 
-            SetDialogueQuest(boDialogue);
-
             // 설정된 다이얼로그 데이터를 UI 다이얼로그에 적용
             uiDialogue.SetDialogue(boDialogue);
-        }
-
-        public void SetDialogueQuest(BoDialogue boDialogue)
-        {
-            var questRefList = boNPC.sdNPC.questRef.ToList();
-            var progressQuests = GameManager.User.boQuest.progressQuests;
-            var completedQuests = GameManager.User.boQuest.completedQuests;
-            var sdQuests = GameManager.SD.sdQuests;
-
-            for (int i = 0; i < progressQuests.Count(); ++i)
-            {
-                if (questRefList.Contains(progressQuests[i].sdQuest.index))
-                    questRefList.Remove(progressQuests[i].sdQuest.index);
-            }
-
-            for (int i = 0; i < completedQuests.Count(); ++i)
-            {
-                if (questRefList.Contains(completedQuests[i].index))
-                    questRefList.Remove(completedQuests[i].index);
-            }
-
-            for (int i = 0; i < questRefList.Count(); ++i)
-            {
-                bool isAntecedentQuestCleared = false;
-                var sdQuest = sdQuests.Where(_ => _.index == questRefList[i]).SingleOrDefault();
-                var antecedentQuests = sdQuest.antecedentQuest;
-
-                if (antecedentQuests.Length != 1 || antecedentQuests[0] != 0)
-                {
-                    for (int j = 0; j < antecedentQuests.Length; ++j)
-                    {
-                        for (int k = 0; k < completedQuests.Count(); ++k)
-                        {
-                            if (completedQuests[k].index == antecedentQuests[j])
-                                isAntecedentQuestCleared = true;
-                        }
-                    }
-                }
-                else
-                {
-                    isAntecedentQuestCleared = true;
-                }
-
-                if (!isAntecedentQuestCleared)
-                {
-                    questRefList.RemoveAt(i);
-                    --i;
-                }
-            }
-
-            boDialogue.orderableQuests = questRefList.ToArray();
         }
 
         /// <summary>
@@ -132,7 +121,7 @@ namespace ProjectW.Object
                 { 
                     // 영역을 벗어났으므로 상호작용 플래그를 끄고, 다이얼로그를 종료시킴
                     boNPC.isInteraction = false;
-                    UIWindowManager.Instance.GetWindow<UIDialogue>().EndDialogue();
+                    UIWindowManager.Instance.GetWindow<UIDialogue>().Close();
                 }
 
                 return;

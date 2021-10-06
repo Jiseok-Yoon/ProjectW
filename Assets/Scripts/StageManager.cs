@@ -199,7 +199,6 @@ namespace ProjectW
 
             var boQuest = GameManager.User.boQuest;
 
-
             // KEEP 일단 보류
             // 받아온 NPC 들 중에 유저 DB에서 해당 유저가 해금한 NPC인지 확인하여
             // 해금된 NPC라면 생성한다.
@@ -207,9 +206,9 @@ namespace ProjectW
             {
                 var isSpawn = false;
 
-                // npc를 생성하기 위해 완료해야하는 퀘스트의 정보를 배열로 복수개를 받는 것이 아니라
-                // 복수 개의 퀘스트를 완료해야 하더라도, 복수개를 퀘스트를 완료할 시 복수개의 퀘스트의 완료를 나타내는 하나의 퀘스트 인덱스를
-                // 만들어서, 최종적으로 데이터를 받을 때 단 하나의 퀘스트 인덱스만 받게 만든다면, for문 순회 자체를 2중으로 할 필요가 없어짐
+                // npc를 생성하기 위해 완료해야하는 퀘스트의 정보를 배열로 복수개를 받는 것이 아니라..
+                // 복수 개의 퀘스트를 완료해야 하더라도, 복수개의 퀘스트를 완료할 시 복수개의 퀘스트의 완료를 나타내는 하나의 퀘스트 인덱스를
+                // 만들어서, 최종적으로 데이터를 받을 때 단 하나의 퀘스트 인덱스만 받게 만든다면, for문 순회 자체를 2중으로 할 필요가 없어짐..
                 for (int j = 0; j < npcs[i].needQuestRef.Length; ++j)
                 {
                     if (npcs[i].needQuestRef[j] == 0)
@@ -223,7 +222,6 @@ namespace ProjectW
                         if (!isSpawn)
                             break;
                     }
-
                 }
 
                 if (!isSpawn)

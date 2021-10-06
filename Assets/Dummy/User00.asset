@@ -21,9 +21,9 @@ MonoBehaviour:
     errorCode: 0
     errorMessage: 
     index: 1000
-    posX: 2.2979507
-    posY: 0.040277153
-    posZ: 0.10850243
+    posX: 1.9653155
+    posY: 0.040277094
+    posZ: 0.51527447
   dtoCharacter:
     errorCode: 0
     errorMessage: 
@@ -46,5 +46,5 @@ MonoBehaviour:
   dtoQuest:
     errorCode: 0
     errorMessage: 
-    progressQuests: 
+    progressQuests: []
     completedQuests: 

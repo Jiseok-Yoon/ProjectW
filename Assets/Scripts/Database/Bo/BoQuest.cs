@@ -1,9 +1,7 @@
-﻿using ProjectW.SD;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectW.SD;
 
 namespace ProjectW.DB
 {
@@ -22,12 +20,12 @@ namespace ProjectW.DB
             {
                 progressQuests.Add(new BoQuestProgress(dtoQuest.progressQuests[i]));
             }
-            
-            for (int i = 0; i < dtoQuest.completedQuests.Count(); ++i)
-            {
-                completedQuests.Add(GameManager.SD.sdQuests.Where(_ => _.index == dtoQuest.completedQuests[i]).SingleOrDefault());
-            }
 
+            for (int i = 0; i < dtoQuest.completedQuests.Length; ++i)
+            { 
+                completedQuests.Add(GameManager.SD.sdQuests
+                    .Where(_ => _.index == dtoQuest.completedQuests[i]).SingleOrDefault());
+            }
         }
     }
 
@@ -36,6 +34,7 @@ namespace ProjectW.DB
     {
         public int[] details;
         public SDQuest sdQuest;
+
         public BoQuestProgress(DtoQuestProgress dtoQuestProgress)
         {
             details = (int[])dtoQuestProgress.details.Clone();

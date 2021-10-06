@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IconAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c334ec66a89e1844fb6c190237146e7b, type: 3}
+    totalSpriteSurfaceArea: 8586
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 20bb3c80c5b50ab4e88105f5149e323d, type: 3}
+  - {fileID: 21300000, guid: 0fa13d9000f1c5f4096e70ab0b9cb612, type: 3}
+  - {fileID: 21300000, guid: de819291871272b448b32cd4003a5244, type: 3}
+  - {fileID: 21300000, guid: a4895ca1943b9be4583518938d43dec6, type: 3}
+  - {fileID: 21300000, guid: c62f21128ef6638418b5f97f7d8b59b6, type: 3}
+  - {fileID: 21300000, guid: 5a8d5442896c8c845b91b6b315ae0a01, type: 3}
+  - {fileID: 21300000, guid: 1c162363cff08ce4c8fe417ac7ac0bb4, type: 3}
+  - {fileID: 21300000, guid: 708d39f3e1dd06e43884e3fffea3f61e, type: 3}
+  - {fileID: 21300000, guid: 556fdc74b2a9fe9428c80cb775903dd0, type: 3}
+  - {fileID: 21300000, guid: 775897169dae5a745bca528f0cfb327e, type: 3}
+  - {fileID: 21300000, guid: c7d2ab86d7c2daf4c94bd57697d27435, type: 3}
+  - {fileID: 21300000, guid: 8a87aab626c74fa4bb4f92309659cc26, type: 3}
+  - {fileID: 21300000, guid: 0330e7473099d984caedce5369fbf382, type: 3}
+  - {fileID: 21300000, guid: 8480be47144bbf145993626284d4cf94, type: 3}
+  - {fileID: 21300000, guid: 21405d87a9a4cab46894d19eb2adf5d4, type: 3}
+  - {fileID: 21300000, guid: e365e3c7b85782646981ba9dc1d83811, type: 3}
+  - {fileID: 21300000, guid: 86918be7a83ea5649bd462604eea6630, type: 3}
+  - {fileID: 21300000, guid: 40d7e4782273c364684922d6dff79a56, type: 3}
+  - {fileID: 21300000, guid: 0df48f9812b14b641bc504d2283bbe7a, type: 3}
+  - {fileID: 21300000, guid: 75e99fe8690ffed478acdab82d2afd97, type: 3}
+  - {fileID: 21300000, guid: 3f6eac39ad7156c4bade50a280d8c9de, type: 3}
+  - {fileID: 21300000, guid: c070c999e8416844291b1d23d5b37c53, type: 3}
+  - {fileID: 21300000, guid: a556e9b904d1ea249a323df7046e5062, type: 3}
+  - {fileID: 21300000, guid: 9f98633a9fd39884fa755c8113b4b113, type: 3}
+  - {fileID: 21300000, guid: 95d5b16a150b172499246b84dc09e809, type: 3}
+  - {fileID: 21300000, guid: 86b8999aef26f8f40880d4b3cc2c8dae, type: 3}
+  - {fileID: 21300000, guid: ab4f351bb3af2ae4d9513dde165f55a5, type: 3}
+  - {fileID: 21300000, guid: fc4cfbcba5b2bd741b2206e0500c258c, type: 3}
+  - {fileID: 21300000, guid: 5ad525fbfb7d6b943bc740cfb20e55c7, type: 3}
+  - {fileID: 21300000, guid: df3e77bc05b593d438a5bf518390319b, type: 3}
+  - {fileID: 21300000, guid: 7b3058cccce161e4b90b177c520c0799, type: 3}
+  - {fileID: 21300000, guid: 8e31857dc900a344abd5ecbe347231d7, type: 3}
+  - {fileID: 21300000, guid: 36ece62eb23e15243bcded0be95680a9, type: 3}
+  - {fileID: 21300000, guid: 6fb31c9e28d0fd94b890f19c0f2e44d2, type: 3}
+  - {fileID: 21300000, guid: cddeddfe5d2baa84c94daf4316a8a6e7, type: 3}
+  - {fileID: 21300000, guid: 521fdeffaceed6e4f9744733a0c90616, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - shield
+  - arrow_right
+  - repeat
+  - coins
+  - snow
+  - exclamation_mark
+  - drop
+  - air
+  - cup
+  - heart
+  - strength
+  - x
+  - play
+  - home
+  - arrow_up
+  - speaker_low
+  - basket
+  - user
+  - flash
+  - leaf
+  - lock
+  - flame
+  - star
+  - check
+  - settings
+  - bin
+  - gem
+  - dots.
+  - i
+  - stats
+  - arrow_down
+  - arrow_left
+  - menu
+  - speaker_high
+  - question_mark
+  - speaker_mute
+  m_RenderDataMap: {}
+  m_Tag: IconAtlas
+  m_IsVariant: 0

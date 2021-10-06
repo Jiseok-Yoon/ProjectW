@@ -17,7 +17,7 @@ namespace ProjectW.Network
         public ResponsHandler<DtoCharacter> characterHandler;
         public ResponsHandler<DtoStage> stageHandler;
         public ResponsHandler<DtoItem> itemHandler;
-        public ResponsHandler<DtoQuest> questsHandler;
+        public ResponsHandler<DtoQuest> questHandler;
 
         public LoginHandler()
         {
@@ -25,7 +25,7 @@ namespace ProjectW.Network
             characterHandler = new ResponsHandler<DtoCharacter>(GetCharacterSuccess, OnFailed);
             stageHandler = new ResponsHandler<DtoStage>(GetStageSuccess, OnFailed);
             itemHandler = new ResponsHandler<DtoItem>(GetItemSuccess, OnFailed);
-            questsHandler = new ResponsHandler<DtoQuest>(GetQuestSuccess, OnFailed);
+            questHandler = new ResponsHandler<DtoQuest>(GetQuestSuccess, OnFailed);
         }
 
         public void Connect()
@@ -68,7 +68,7 @@ namespace ProjectW.Network
             GameManager.User.boCharacter = new BoCharacter(dtoCharacter);
 
             // 다음으로 퀘스트 정보를 요청한다.
-            ServerManager.Server.GetQuest(0, questsHandler);
+            ServerManager.Server.GetQuest(0, questHandler);
         }
 
         /// <summary>

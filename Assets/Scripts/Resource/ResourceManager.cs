@@ -69,7 +69,7 @@ namespace ProjectW.Resource
         {
             LoadPoolableObject<HpBar>(PoolType.HpBar, $"Prefabs/UI/HpBar", 10);
             LoadPoolableObject<Object.Item>(PoolType.Item, $"Prefabs/Item", 10);
-            LoadPoolableObject<DialogueButton>(PoolType.DialogueButton, $"Prefabs/UI/DialogueButton", 10);
+            LoadPoolableObject<DialogueButton>(PoolType.DialogueButton, $"Prefabs/UI/DialogueButton", 5);
             LoadPoolableObject<QuestSlot>(PoolType.QuestSlot, $"Prefabs/UI/QuestSlot", 10);
         }
 

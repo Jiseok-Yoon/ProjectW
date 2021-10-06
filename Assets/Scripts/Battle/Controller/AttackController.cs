@@ -7,7 +7,6 @@ namespace ProjectW.Battle
     using ActorType = Define.Actor.ActorType;
     using ActorState = Define.Actor.ActorState;
     using AttackType = Define.Actor.AttackType;
-    using PoolType = Define.PoolType;
 
     /// <summary>
     /// 액터의 공격 기능을 담당할 컨트롤러
