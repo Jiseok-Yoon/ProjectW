@@ -48,5 +48,13 @@ namespace ProjectW.Network
         /// <param name="uniqueId"></param>
         /// <param name="responsHandler"></param>
         void GetQuest(int uniqueId, ResponsHandler<DtoQuest> responsHandler);
+
+        /// <summary>
+        /// 서버에 유저의 퀘스트 db에 새로운 퀘스트 정보 추가를 요청하는 메서드
+        /// </summary>
+        /// <param name="uniqueId"></param>
+        /// <param name="questIndex">추가할 퀘스트의 인덱스</param>
+        /// <param name="responsHandler">요청 성공 시 데이터를 반환받아 처리할 핸들러</param>
+        void AddQuest(int uniqueId, int questIndex, ResponsHandler<DtoQuestProgress> responsHandler);
     }
 }

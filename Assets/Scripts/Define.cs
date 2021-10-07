@@ -100,5 +100,6 @@ namespace ProjectW.Define
     {
         public enum QuestType { Hunt, Collect, Adventure, }
         public enum QuestWindow { List, Order }
+        public enum QuestTabType { Progress, Complete }
     }
 }

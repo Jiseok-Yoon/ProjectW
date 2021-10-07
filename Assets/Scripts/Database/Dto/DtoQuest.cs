@@ -20,7 +20,7 @@ namespace ProjectW.DB
     /// 진행 중인 퀘스트에 대한 상세 데이터를 갖는 Dto
     /// </summary>
     [Serializable]
-    public class DtoQuestProgress
+    public class DtoQuestProgress : DtoBase
     {
         public int index; // 진행중인 퀘스트 인덱스
         public int[] details; // 진행중인 퀘스트에 대한 세부정보 (ex: 사냥이라면 현재 몇마리?)
