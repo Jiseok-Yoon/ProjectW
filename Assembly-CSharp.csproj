@@ -65,7 +65,7 @@
     <Compile Include="Assets\Scripts\Dummy\ServerModuleDummy.cs" />
     <Compile Include="Assets\Scripts\Object\Character\Character.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Database\Bo\BoNPC.cs" />
+    <Compile Include="Assets\Scripts\Database\Bo\BoNpc.cs" />
     <Compile Include="Assets\Scripts\Network\Handler\LoginHandler.cs" />
     <Compile Include="Assets\Scripts\UI\UIElements\DialogueButton.cs" />
     <Compile Include="Assets\Scripts\TitleController.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Assets\Scripts\UI\Implementation\UIInventory.cs" />
     <Compile Include="Assets\Scripts\Object\Item\Item.cs" />
     <Compile Include="Assets\Scripts\Network\ServerModuleFactory.cs" />
-    <Compile Include="Assets\Scripts\StaticData\Implementation\SDNPC.cs" />
+    <Compile Include="Assets\Scripts\StaticData\Implementation\SDNpc.cs" />
     <Compile Include="Assets\Scripts\Database\Dto\DtoAccount.cs" />
     <Compile Include="Assets\Scripts\Network\NetworkHandler.cs" />
     <Compile Include="Assets\Scripts\Database\Bo\BoDialogue.cs" />
@@ -431,12 +431,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.14f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.14f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.14f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

@@ -13,16 +13,22 @@ namespace ProjectW.UI
 
         public Image icon;
         public TextMeshProUGUI title;
-
+        public SDQuest sdQuest;
 
         public void SetQuest(SDQuest sdQuest)
         {
+            this.sdQuest = sdQuest;
             title.text = sdQuest.name;
         }
 
         public void SetQuest(BoQuestProgress boQuestProgress)
         {
             SetQuest(boQuestProgress.sdQuest);
+        }
+        public void Clear()
+        {
+            sdQuest = null;
+            title.text = "";
         }
     }
 }

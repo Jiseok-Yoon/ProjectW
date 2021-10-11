@@ -36,6 +36,9 @@ namespace ProjectW.UI
         {
             base.Start();
 
+            progressTab.onClick.AddListener(TabOnClicked);
+            completedTab.onClick.AddListener(TabOnClicked);
+
             // 수주창에서 거절 버튼 클릭 시 이벤트 바인딩
             refuse.onClick.AddListener(() => { Close(); });
         }
@@ -55,7 +58,11 @@ namespace ProjectW.UI
         public void Open(QuestWindow questWindow, SDQuest orderQuest = null)
         {
             if (isOpen)
+            {
+                Close();
                 return;
+            }
+                
 
             currentWindow = questWindow;
             var isListWindow = currentWindow == QuestWindow.List;
@@ -77,6 +84,8 @@ namespace ProjectW.UI
 
         public override void Close(bool force = false)
         {
+            ListWindowClear();
+
             base.Close(force);
         }
 
@@ -127,6 +136,7 @@ namespace ProjectW.UI
                         progressQuest.transform.localScale = Vector3.one;
                         progressQuest.SetQuest(progressQuests[i]);
                         progressQuest.gameObject.SetActive(true);
+                        questSlots.Add(progressQuest);
                     }
                     break;
                 case QuestTabType.Complete:
@@ -137,10 +147,37 @@ namespace ProjectW.UI
                         completedQuest.transform.localScale = Vector3.one;
                         completedQuest.SetQuest(completedQuests[i]);
                         completedQuest.gameObject.SetActive(true);
+                        questSlots.Add(completedQuest);
                     }
                     break;
             }
 
+        }
+        private void ListWindowClear()
+        {
+            var pool = ObjectPoolManager.Instance.GetPool<QuestSlot>(Define.PoolType.QuestSlot);
+
+            for (int i = 0; i < questSlots.Count; ++i)
+            {
+                questSlots[i].Clear();
+                pool.ReturnPoolableObject(questSlots[i]);
+            }
+            questSlots.Clear();
+        }
+
+        private void TabOnClicked()
+        {
+            ListWindowClear();
+            switch (currentTab)
+            {
+                case QuestTabType.Progress:
+                    currentTab = QuestTabType.Complete;
+                    break;
+                case QuestTabType.Complete:
+                    currentTab = QuestTabType.Progress;
+                    break;
+            }
+            SetListWindow();
         }
     }
 }
